@@ -1,1 +1,35 @@
-<p>html works!</p>
+<div>
+  <form [formGroup]="form">
+    <div>
+      <input name="username" id="username" type="text" placeholder="username" formControlName="username">
+    </div>
+    <div>
+      <input name="email" type="email" placeholder="email" formControlName="email">
+    </div>
+    <div>
+      <input type="password" placeholder="password" formControlName="password">
+    </div>
+  </form>
+
+  <button (click)="signUp()" [disabled]="this.form.invalid">Submit</button>
+  <button (click)="getAllUsers()">Get Users</button>
+</div>
+
+<pre>
+  {{ form.value | json }}
+</pre>
+
+
+<hr>
+<div>
+  <ng-container *ngFor="let user of users">
+    <div class="user-list-item" @fade>
+      <div>
+        {{user.username}}
+      </div>
+      <div>
+        {{user.email}}
+      </div>
+    </div>
+  </ng-container>
+</div>
